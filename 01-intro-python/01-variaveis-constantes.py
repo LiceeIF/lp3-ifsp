@@ -34,9 +34,8 @@ múltiplas linhas
 # docstring (comentário de documentação)
 # documentar classe, módulos, funções...
 
-def somar (double numero1, numero2):
+def somar (numero1, numero2):
     return numero1 + numero2
 
 # para uma função funcionar, é necessário que sua identação esteja completa
 
-somar()
