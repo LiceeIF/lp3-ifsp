@@ -37,12 +37,10 @@ def classificar_imc(imc):
     else:
         return "Obesidade de Classe 3"
 
-'''
 def diferenca_peso_ideal(peso, altura):
     peso_ideal = 24.9 
     diferenca = abs(peso_ideal - peso)
     return diferenca
-'''
 
 peso = float(input("Digite o seu peso em kg: "))
 altura = float(input("Digite a sua altura em metros: "))
@@ -52,11 +50,10 @@ classificacao = classificar_imc(imc)
 diferenca_peso = diferenca_peso_ideal(peso, altura)
 
 print("\nClassificação do IMC:", classificacao)
-print("Você precisa", end=' ')
-if imc < 18.5:
-    print(f"ganhar {diferenca_peso:.2f} kg para chegar ao peso normal.")
-elif imc > 25:
-    print(f"perder {diferenca_peso:.2f} kg para chegar ao peso normal.")
-else:
-    print("está no peso normal.")
 
+if imc < 18.5:
+    print(f"você precisa ganhar {diferenca_peso:.2f} kg para chegar ao peso normal.")
+elif imc > 24.9:
+    print(f"você precisa perder {diferenca_peso:.2f} kg para chegar ao peso normal.")
+else:
+    print("você está no peso normal.")
