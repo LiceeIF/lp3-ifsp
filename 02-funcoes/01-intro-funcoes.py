@@ -1,4 +1,4 @@
-# FUNÇÃO
+ # FUNÇÃO
 # feita para modularizar o programa, quando temos função, é costume ter reuso e manutenabilidade 
 
 # DECLARAÇÃO
