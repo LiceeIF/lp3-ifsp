@@ -5,49 +5,48 @@ O programa começa com uma palavra oculta
 letra. O usuário tem um número limitado de tentativas para adivinhar toda a palavra.
 '''
 
-import random
-
-def escolher_palavra():
-    palavras = ["python", "programacao", "computador", "algoritmo", "linguagem"]
-    return random.choice(palavras)
-
 def mostrar_palavra_oculta(palavra, letras_corretas):
-    resultado = ""
+    resultado = ''
     for letra in palavra:
         if letra in letras_corretas:
-            resultado += letra
+            resultado += letra + ' '
         else:
-            resultado += "_"
-        return resultado
+            resultado += '_ '
+    return resultado.strip()
 
-def jogar_forca():
-    palavra = escolher_palavra()
-    tentativas_restantes = 6
-    letras_corretas = []
-    letras_erradas = []
+def jogo_da_forca(palavra, tentativas):
+    letras_corretas = set()
+    letras_incorretas = set()
     
-print("Bem-vindo ao jogo da forca!")
-print("A palavra tem", len(palavra), "letras.")
-
-while tentativas_restantes > 0:
-    print("\nPalavra:", mostrar_palavra_oculta(palavra, letras_corretas))
-
-if len(letras_erradas) > 0:
-    print("Letras erradas:", " ".join(letras_erradas))
-
-tentativa = input("Digite uma letra: ").lower()
-
-if tentativa in palavra:
-    letras_corretas.append(tentativa)
-if len(set(letras_corretas)) == len(set(palavra)):
-    print("\nParabéns! Você acertou a palavra:", palavra)
-else:
-    letras_erradas.append(tentativa)
-
-tentativas_restantes -= 1
-print("Letra incorreta. Você tem", tentativas_restantes, "tentativas restantes.")
-
-if tentativas_restantes == 0:
+    print("Bem-vindo ao jogo da Forca!")
+    print("A palavra tem", len(palavra), "letras.")
+    
+    while tentativas > 0:
+        print("\nPalavra:", mostrar_palavra_oculta(palavra, letras_corretas))
+        print("Tentativas restantes:", tentativas)
+        
+        palpite = input("Digite uma letra: ").lower()
+        
+        if len(palpite) != 1 or not palpite.isalpha():
+            print("Por favor, digite apenas uma letra.")
+            continue
+        
+        if palpite in letras_corretas or palpite in letras_incorretas:
+            print("Você já tentou essa letra. Tente outra.")
+            continue
+        
+        if palpite in palavra:
+            letras_corretas.add(palpite)
+            if len(letras_corretas) == len(set(palavra)):
+                print("\nParabéns! Você adivinhou a palavra:", palavra)
+                return
+        else:
+            letras_incorretas.add(palpite)
+            tentativas -= 1
+            print("Letra incorreta. Tente novamente.")
+    
     print("\nVocê perdeu! A palavra era:", palavra)
 
-jogar_forca()
+palavra_oculta = "paralelepipedo"
+tentativas = 4
+jogo_da_forca(palavra_oculta, tentativas)
