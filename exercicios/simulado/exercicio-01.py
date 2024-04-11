@@ -6,8 +6,6 @@ import random
 
 numero = random.randint(1, 100)
 
-print(numero)
-
 while True:
     chute = int(input('Insira um número:'))
     if chute == numero:
@@ -17,3 +15,4 @@ while True:
         print('tente novamente, seu número está longe')
     else:
         print('tente outro número, este está muito baixo')
+    print(numero)

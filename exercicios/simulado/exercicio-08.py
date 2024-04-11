@@ -7,13 +7,9 @@ cada palavra aparece no texto. Depois, teste a função com
 diferentes textos fornecidos pelo usuário. 
 '''
 def contar_palavras(frase):
-    # Dividir a frase em palavras
     palavras = frase.split()
-
-    # Inicializar o dicionário para armazenar as contagens de palavras
     contagem = []
 
-    # Contar as palavras e armazenar as contagens no dicionário
     for palavra in palavras:
         if palavra in contagem:
             contagem[palavra] += 1
@@ -21,7 +17,6 @@ def contar_palavras(frase):
             contagem[palavra] = 1
     return contagem
 
-# Teste da função com diferentes textos fornecidos pelo usuário
 while True:
     texto = input("Digite um texto (ou 'sair' para encerrar): ")
     if texto.lower() == 'sair':
